@@ -25,7 +25,7 @@ const siteConfig = {
   tagline: 'React Native Typescript Boilerplate & Code Generator',
   url: 'https://anoaland.github.io', // Your website URL
   // baseUrl: '/',
-  baseUrl: '/anoa.io/',
+  baseUrl: process.env.NODE_ENV === 'production' ? '/anoa.io/' : '/',
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
