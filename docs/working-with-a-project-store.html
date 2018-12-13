@@ -1,0 +1,384 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Store · Anoa CLI</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;Store in here is a &lt;a href=&quot;https://react-redux.js.org&quot;&gt;React Redux&lt;/a&gt; Store. You use this command to do something with React Redux:&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Store · Anoa CLI"/><meta property="og:type" content="website"/><meta property="og:url" content="https://anoaland.github.io/index.html"/><meta property="og:description" content="&lt;p&gt;Store in here is a &lt;a href=&quot;https://react-redux.js.org&quot;&gt;React Redux&lt;/a&gt; Store. You use this command to do something with React Redux:&lt;/p&gt;
+"/><meta property="og:image" content="https://anoaland.github.io/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://anoaland.github.io/img/docusaurus.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/anoa.svg" alt="Anoa CLI"/><h2 class="headerTitleWithLogo">Anoa CLI</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/getting-started-installation" target="_self">Docs</a></li><li class=""><a href="/team" target="_self">Team</a></li><li class=""><a href="https://github.com/anoaland/anoa-cli" target="_self">Github</a></li><li class=""><a target="_self"></a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Working With A Project</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/getting-started-installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-create-project">Create New Project</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-project-structure">Project Structure</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Working With A Project</h3><ul><li class="navListItem"><a class="navItem" href="/docs/working-with-a-project-view">View</a></li><li class="navListItem"><a class="navItem" href="/docs/working-with-a-project-navigation">Navigation</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/working-with-a-project-store">Store</a></li><li class="navListItem"><a class="navItem" href="/docs/working-with-a-project-data">Data</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Store</h1></header><article><div><span><p>Store in here is a <a href="https://react-redux.js.org">React Redux</a> Store. You use this command to do something with React Redux:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+</code></pre>
+<p>or</p>
+<pre><code class="hljs css language-bash">$ anoa s
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="create-new-reducer"></a><a href="#create-new-reducer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create new reducer</h2>
+<p>Executing command above you'll get several option to choose:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store?
+<span class="token operator">></span> Create new reducer
+  Add new fields into existing state
+  Add new action creator
+  Update AppStore
+</code></pre>
+<p>Let start by choosing <strong>Create new reducer</strong>, and specify the Reducer name with <code>todo</code> for example:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Create new reducer
+? Reducer name: todo
+</code></pre>
+<p>Now specify the state. In this example I'd like to have <code>tasks</code> and <code>completedTasks</code> which are array of string so I just do this:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Create new reducer
+? Reducer name: todo
+? State fields <span class="token punctuation">(</span>separated with space, eg: foo:string<span class="token operator">=</span><span class="token string">'some value'</span> bar:number<span class="token operator">=</span>26<span class="token punctuation">)</span>, or leave it blank, we'll create an example <span class="token keyword">for</span> you: tasks:string<span class="token punctuation">[</span><span class="token punctuation">]</span> completedTasks:string<span class="token punctuation">[</span><span class="token punctuation">]</span>
+</code></pre>
+<p>For the very first time you add store in your application, Anoa will installs new packages from npm which are :</p>
+<pre><code class="hljs"><span class="hljs-attribute">react-redux
+redux
+redux-thunk</span>
+</code></pre>
+<p>and also</p>
+<pre><code class="hljs">@<span class="hljs-keyword">types</span>/<span class="hljs-keyword">react</span>-<span class="hljs-keyword">redux</span>
+</code></pre>
+<p>for typings support for Typescript. Just wait for a moment...</p>
+<pre><code class="hljs css language-bash"><span class="token operator">|</span> Adding required packages<span class="token punctuation">..</span>.
+</code></pre>
+<p>and done:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Create new reducer
+? Reducer name: todo
+? State fields <span class="token punctuation">(</span>separated with space, eg: foo:string<span class="token operator">=</span><span class="token string">'some value'</span> bar:number<span class="token operator">=</span>26<span class="token punctuation">)</span>, or leave it blank, we'll create an example <span class="token keyword">for</span> you: tasks:string<span class="token punctuation">[</span><span class="token punctuation">]</span> completedTasks:string<span class="token punctuation">[</span><span class="token punctuation">]</span>
+√ Required packages added.
+√ Required packages added.
+New reducer was successfully created on src/store/reducers/todo/index.ts
+</code></pre>
+<p>It says that <code>New reducer was successfully created on src/store/reducers/todo/index.ts</code> you can check this file to see your new reducer.</p>
+<h3><a class="anchor" aria-hidden="true" id="indexts"></a><a href="#indexts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>index.ts</h3>
+<pre><code class="hljs css language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Reducer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span>
+<span class="token keyword">import</span> TodoActions <span class="token keyword">from</span> <span class="token string">'./actions'</span>
+<span class="token keyword">import</span> TodoState <span class="token keyword">from</span> <span class="token string">'./state'</span>
+
+<span class="token keyword">const</span> TodoReducer<span class="token punctuation">:</span> Reducer<span class="token operator">&lt;</span>TodoState<span class="token punctuation">,</span> TodoActions<span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">(</span>
+  state <span class="token operator">=</span> <span class="token punctuation">{</span>
+    tasks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    completedTasks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  action
+<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span><span class="token keyword">type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">'TODO/TASKS'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>state<span class="token punctuation">,</span> tasks<span class="token punctuation">:</span> action<span class="token punctuation">.</span>payload <span class="token punctuation">}</span>
+
+    <span class="token keyword">case</span> <span class="token string">'TODO/COMPLETED_TASKS'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token operator">...</span>state<span class="token punctuation">,</span> completedTasks<span class="token punctuation">:</span> action<span class="token punctuation">.</span>payload <span class="token punctuation">}</span>
+
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> state
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> TodoReducer
+</code></pre>
+<p>There are also two files generated as well which are <code>actions.ts</code> and <code>state.ts</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="actionsts"></a><a href="#actionsts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>actions.ts</h3>
+<pre><code class="hljs css language-typescript"><span class="token keyword">type</span> TodoActions <span class="token operator">=</span>
+  <span class="token operator">|</span> <span class="token punctuation">{</span>
+      <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'TODO/TASKS'</span>
+      payload<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token operator">|</span> <span class="token punctuation">{</span>
+      <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'TODO/COMPLETED_TASKS'</span>
+      payload<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> TodoActions
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="statets"></a><a href="#statets" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>state.ts</h3>
+<pre><code class="hljs css language-typescript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">interface</span> <span class="token class-name">TodoState</span> <span class="token punctuation">{</span>
+  tasks<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+  completedTasks<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Feel free to modify those files as if needed.</p>
+<h2><a class="anchor" aria-hidden="true" id="appstore"></a><a href="#appstore" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AppStore</h2>
+<p>Beside of generating those reducer files, at the very first time you create a reducer, this command will also generates <code>src/store/reducers/index.ts</code>:</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> combineReducers <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span>
+<span class="token keyword">import</span> TodoReducer <span class="token keyword">from</span> <span class="token string">'./todo'</span>
+<span class="token keyword">import</span> TodoActions <span class="token keyword">from</span> <span class="token string">'./todo/actions'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> reducers <span class="token operator">=</span> <span class="token function">combineReducers</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  todo<span class="token punctuation">:</span> TodoReducer
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">type</span> AppRootActions <span class="token operator">=</span> TodoActions
+
+<span class="token keyword">export</span> <span class="token keyword">type</span> AppRootState <span class="token operator">=</span> ReturnType<span class="token operator">&lt;</span><span class="token keyword">typeof</span> reducers<span class="token operator">></span>
+</code></pre>
+<p>Where <code>AppRootActions</code> and <code>AppRootState</code> automatically generated based on reducers you have.
+You should not touch this file since this file will always get modified when you add or modify your reducers
+by using anoa's commands.</p>
+<p>And also <code>src/store/index.ts</code> :</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> ReduxStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'anoa'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ThunkAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-thunk'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> AppRootActions<span class="token punctuation">,</span> AppRootState<span class="token punctuation">,</span> reducers <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./reducers'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> AppStore <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReduxStore</span><span class="token operator">&lt;</span>AppRootState<span class="token punctuation">,</span> AppRootActions<span class="token operator">></span><span class="token punctuation">(</span>reducers<span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">type</span> AppThunkAction<span class="token operator">&lt;</span>TResult <span class="token operator">=</span> <span class="token keyword">void</span><span class="token operator">></span> <span class="token operator">=</span> ThunkAction<span class="token operator">&lt;</span>
+  TResult<span class="token punctuation">,</span>
+  AppRootState<span class="token punctuation">,</span>
+  undefined<span class="token punctuation">,</span>
+  AppRootActions
+<span class="token operator">></span>
+</code></pre>
+<p>Where <code>AppStore</code> is our redux store. If you check on <code>App.tsx</code>, the <code>mainRender</code> function is also changed:</p>
+<pre><code class="hljs css language-typescript"><span class="token function">renderMain</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>AppStore<span class="token punctuation">.</span>Provider<span class="token operator">></span>
+      <span class="token operator">&lt;</span>MainScreen <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>AppStore<span class="token punctuation">.</span>Provider<span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>That now <code>&lt;MainScreen/&gt;</code> component wrapped with <code>AppStore.Provider</code>. And in this <code>App.tsx</code>, if check on <code>prepare()</code> method:</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">async</span> <span class="token function">prepare</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Promise<span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> Asset<span class="token punctuation">.</span><span class="token function">loadAsync</span><span class="token punctuation">(</span><span class="token keyword">require</span><span class="token punctuation">(</span><span class="token string">'../assets/logo.png'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token keyword">await</span> AppStore<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>On the last line <code>await AppStore.init()</code> was added to initialize our redux store.</p>
+<h2><a class="anchor" aria-hidden="true" id="add-new-fields-into-existing-state"></a><a href="#add-new-fields-into-existing-state" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Add new fields into existing state</h2>
+<p>Rather than editing reducer files, if you only want to add more fields in your existing state, you can use this command bellow:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store?
+  Create new reducer
+<span class="token operator">></span> Add new fields into existing state
+  Add new action creator
+  Update AppStore
+  Connect store to view
+</code></pre>
+<blockquote>
+<p>Notice there is also new command called <strong>Connect store to view</strong>. I'll explain this later on the next chapter.</p>
+</blockquote>
+<p>OK, now press ENTER and you'll select the <strong>state</strong> that you want to modify:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Add new fields into existing state
+? Select state:
+<span class="token operator">></span> todo
+</code></pre>
+<p>After the state is selected, let say I want to add new field named <code>importantTasks</code> and the type is array of string too, then on the next step:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Add new fields into existing state
+? Select state: todo
+? Field<span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token punctuation">(</span>separated with space, eg: foo:string<span class="token operator">=</span><span class="token string">'some value'</span> bar:number<span class="token operator">=</span>26<span class="token punctuation">)</span>: importantTasks:string<span class="token punctuation">[</span><span class="token punctuation">]</span>
+</code></pre>
+<p>Press ENTER and done:</p>
+<pre><code class="hljs"><span class="hljs-keyword">New</span> field(s) was successfully added <span class="hljs-keyword">to</span> TodoState <span class="hljs-keyword">on</span> src/store/reducers/todo/<span class="hljs-keyword">index</span>.ts
+</code></pre>
+<p>You can check the changes being made on both of <code>index.ts</code>, <code>action.ts</code> and <code>state.ts</code> file.</p>
+<h2><a class="anchor" aria-hidden="true" id="add-new-action-creator"></a><a href="#add-new-action-creator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Add new action creator</h2>
+<p>This command will generates <a href="https://github.com/reduxjs/redux-thunk">redux-thunk</a> action creator for you:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store?
+  Create new reducer
+  Add new fields into existing state
+<span class="token operator">></span> Add new action creator
+  Update AppStore
+  Connect store to view
+</code></pre>
+<p>For example I would like to create action creator named <code>addTask</code>:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Add new action creator
+? Action name addTask
+</code></pre>
+<p>And select an action type from our <code>TodoActions</code>:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Add new action creator
+? Action name addTask
+? Action <span class="token function">type</span> <span class="token punctuation">(</span>Leave blank -- we'll <span class="token keyword">let</span> you to pick it<span class="token punctuation">)</span>:
+? Select action from
+<span class="token operator">></span> TodoActions
+</code></pre>
+<p>Since this action will mutate the <code>tasks</code> state from <code>todo</code> reducer, then let's choose <code>TODO/TASKS</code> action type:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Add new action creator
+? Action name addTask
+? Action <span class="token function">type</span> <span class="token punctuation">(</span>Leave blank -- we'll <span class="token keyword">let</span> you to pick it<span class="token punctuation">)</span>:
+? Select action from TodoActions
+? Select <span class="token function">type</span>
+<span class="token operator">></span> TODO/TASKS
+  TODO/COMPLETED_TASKS
+  TODO/IMPORTANT_TASKS
+</code></pre>
+<p>Now enter the file name. This file will be stored under <code>src/store/actions</code> directory. Let's give it name with <code>todo</code>:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Add new action creator
+? Action name addTask
+? Action <span class="token function">type</span> <span class="token punctuation">(</span>Leave blank -- we'll <span class="token keyword">let</span> you to pick it<span class="token punctuation">)</span>:
+? Select action from TodoActions
+? Select <span class="token function">type</span> TODO/TASKS
+? Save this action to <span class="token function">file</span> name: todo
+</code></pre>
+<p>And done!</p>
+<pre><code class="hljs css language-bash">New action was successfully created on src/store/actions/todo.ts
+</code></pre>
+<p>Here's our new redux-thunk action creator:</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> AppThunkAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'..'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">addTaskAction</span><span class="token punctuation">(</span>payload<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span> AppThunkAction <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> dispatch <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'TODO/TASKS'</span><span class="token punctuation">,</span> payload <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>This command simply transforms the state's field(s) of action type as a payload parameter(s).
+You can modify this action creator to fullfill your needs, for example:</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">addTaskAction</span><span class="token punctuation">(</span>task<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">:</span> AppThunkAction <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">async</span> <span class="token punctuation">(</span>dispatch<span class="token punctuation">,</span> getState<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token keyword">type</span><span class="token punctuation">:</span> <span class="token string">'TODO/TASKS'</span><span class="token punctuation">,</span>
+      payload<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>todo<span class="token punctuation">.</span>tasks<span class="token punctuation">,</span> task<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>And create new action creator on the same file or new file.</p>
+<h2><a class="anchor" aria-hidden="true" id="update-appstore"></a><a href="#update-appstore" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Update AppStore</h2>
+<p>You will need to use this command when you make changes on your reducers manually.</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store?
+  Create new reducer
+  Add new fields into existing state
+  Add new action creator
+<span class="token operator">></span> Update AppStore
+  Connect store to view
+</code></pre>
+<p>This action will update the application root state according to those changes.
+For instance if you delete one of your reducer, rename it or make a new one by coding it manually,
+then you need to call this command so it will update the <code>src/store/reducers/index.ts</code> file where <code>AppRootActions</code> and <code>AppRootState</code> generated.</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Update AppStore
+Store was successfully updated.
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="connect-store-to-view"></a><a href="#connect-store-to-view" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Connect store to view</h2>
+<p>Here's the nice part! That anoa can modify your existings views (screens or components) code to connect it to your reducers.</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store?
+  Create new reducer
+  Add new fields into existing state
+  Add new action creator
+  Update AppStore
+<span class="token operator">></span> Connect store to view
+</code></pre>
+<p>Select the kind of view:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Connect store to view
+? What kind of view would you like to connect to theme? <span class="token punctuation">(</span>Use arrow keys<span class="token punctuation">)</span>
+  Component
+<span class="token operator">></span> Screen
+</code></pre>
+<p>In this example I selected <strong>Screen</strong>, now I can select the screen that I want to connect to (<strong>TodoListScreen</strong> for example):</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Connect store to view
+? What kind of view would you like to connect to theme? Screen
+? Select the Screen you want to connect to
+  CompletedTaskListScreen <span class="token punctuation">[</span>completed-task-list<span class="token punctuation">]</span>
+  MainScreen <span class="token punctuation">[</span>main<span class="token punctuation">]</span>
+<span class="token operator">></span> TodoListScreen <span class="token punctuation">[</span>todo-list<span class="token punctuation">]</span>
+</code></pre>
+<p>Now let's select state to map:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Connect store to view
+? What kind of view would you like to connect to theme? Screen
+? Select the Screen you want to connect to TodoListScreen <span class="token punctuation">[</span>todo-list<span class="token punctuation">]</span>
+? Select state<span class="token punctuation">(</span>s<span class="token punctuation">)</span> you want to map
+ <span class="token punctuation">(</span> <span class="token punctuation">)</span> all
+ <span class="token punctuation">(</span> <span class="token punctuation">)</span> none
+ ────────
+ <span class="token punctuation">(</span> <span class="token punctuation">)</span> TodoState
+<span class="token operator">></span>  √ todo.tasks
+   <span class="token punctuation">[</span> <span class="token punctuation">]</span> todo.completedTasks
+   <span class="token punctuation">[</span> <span class="token punctuation">]</span> todo.importantTasks
+</code></pre>
+<p>Following by selecting action to map:</p>
+<pre><code class="hljs css language-bash">$ anoa store
+? What would you like to <span class="token keyword">do</span> with store? Connect store to view
+? What kind of view would you like to connect to theme? Screen
+? Select the Screen you want to connect to TodoListScreen <span class="token punctuation">[</span>todo-list<span class="token punctuation">]</span>
+? Select state<span class="token punctuation">(</span>s<span class="token punctuation">)</span> you want to map todo.tasks
+? Select action<span class="token punctuation">(</span>s<span class="token punctuation">)</span> you want to map
+<span class="token operator">></span><span class="token punctuation">(</span>*<span class="token punctuation">)</span> addTaskAction<span class="token punctuation">(</span><span class="token punctuation">{</span>payload:string<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>By the way you can map the <strong>state(s)</strong> or <strong>action(s)</strong> only -- or both of it based on your needs.
+And done:</p>
+<pre><code class="hljs css language-bash">? What would you like to <span class="token keyword">do</span> with store? Connect store to view
+? What kind of view would you like to connect to theme? Screen
+? Select the Screen you want to connect to TodoListScreen <span class="token punctuation">[</span>todo-list<span class="token punctuation">]</span>
+? Select state<span class="token punctuation">(</span>s<span class="token punctuation">)</span> you want to map todo.tasks
+? Select action<span class="token punctuation">(</span>s<span class="token punctuation">)</span> you want to map addTaskAction<span class="token punctuation">(</span><span class="token punctuation">{</span>payload:string<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+Store was successfully connected to TodoListScreen <span class="token function">screen</span> on src/views/screens/todo-list/index.tsx
+</code></pre>
+<p>You can go to your view file, that now is decorated with <code>@AppStore.withStoreClass</code> class decorator:</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Text<span class="token punctuation">,</span> View <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> AppStore <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../../../store'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> addTaskAction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../../../store/actions/todo'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  TodoListScreenActionProps<span class="token punctuation">,</span>
+  TodoListScreenProps<span class="token punctuation">,</span>
+  TodoListScreenStateProps
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./props'</span>
+
+@AppStore<span class="token punctuation">.</span>withStoreClass<span class="token operator">&lt;</span>TodoListScreenStateProps<span class="token punctuation">,</span> TodoListScreenActionProps<span class="token operator">></span><span class="token punctuation">(</span>
+  state <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> todoTasks<span class="token punctuation">:</span> state<span class="token punctuation">.</span>todo<span class="token punctuation">.</span>tasks <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  dispatch <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> addTask<span class="token punctuation">:</span> payload <span class="token operator">=></span> <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">addTaskAction</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">TodoListScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span><span class="token operator">&lt;</span>TodoListScreenProps<span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">:</span> TodoListScreenProps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">public</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>View<span class="token operator">></span>
+        <span class="token operator">&lt;</span>Text<span class="token operator">></span>TodoListScreen<span class="token operator">&lt;</span><span class="token operator">/</span>Text<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>And also your props also extended to state(s) and action(s) you have picked:</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">TodoListScreenProps</span>
+  <span class="token keyword">extends</span> <span class="token class-name">Partial</span><span class="token operator">&lt;</span>TodoListScreenStateProps<span class="token operator">></span><span class="token punctuation">,</span>
+    Partial<span class="token operator">&lt;</span>TodoListScreenActionProps<span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">TodoListScreenStateProps</span> <span class="token punctuation">{</span>
+  todoTasks<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">TodoListScreenActionProps</span> <span class="token punctuation">{</span>
+  addTask<span class="token punctuation">:</span> <span class="token punctuation">(</span>payload<span class="token punctuation">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">void</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/working-with-a-project-navigation"><span class="arrow-prev">← </span><span>Navigation</span></a><a class="docs-next button" href="/docs/working-with-a-project-data"><span>Data</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#create-new-reducer">Create new reducer</a><ul class="toc-headings"><li><a href="#indexts">index.ts</a></li><li><a href="#actionsts">actions.ts</a></li><li><a href="#statets">state.ts</a></li></ul></li><li><a href="#appstore">AppStore</a></li><li><a href="#add-new-fields-into-existing-state">Add new fields into existing state</a></li><li><a href="#add-new-action-creator">Add new action creator</a></li><li><a href="#update-appstore">Update AppStore</a></li><li><a href="#connect-store-to-view">Connect store to view</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Released under the <a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT License</a></section><section class="copyright">Copyright © 2018 Budi Adiono</section></footer></div></body></html>

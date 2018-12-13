@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>View · Anoa CLI</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;We organize views in a project into &lt;strong&gt;screens&lt;/strong&gt; and &lt;strong&gt;components&lt;/strong&gt;.&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="View · Anoa CLI"/><meta property="og:type" content="website"/><meta property="og:url" content="https://anoaland.github.io/index.html"/><meta property="og:description" content="&lt;p&gt;We organize views in a project into &lt;strong&gt;screens&lt;/strong&gt; and &lt;strong&gt;components&lt;/strong&gt;.&lt;/p&gt;
+"/><meta property="og:image" content="https://anoaland.github.io/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://anoaland.github.io/img/docusaurus.png"/><link rel="shortcut icon" href="/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/prism.css"/><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/anoa.svg" alt="Anoa CLI"/><h2 class="headerTitleWithLogo">Anoa CLI</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/getting-started-installation" target="_self">Docs</a></li><li class=""><a href="/team" target="_self">Team</a></li><li class=""><a href="https://github.com/anoaland/anoa-cli" target="_self">Github</a></li><li class=""><a target="_self"></a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Working With A Project</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/getting-started-installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-create-project">Create New Project</a></li><li class="navListItem"><a class="navItem" href="/docs/getting-started-project-structure">Project Structure</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Working With A Project</h3><ul><li class="navListItem navListItemActive"><a class="navItem" href="/docs/working-with-a-project-view">View</a></li><li class="navListItem"><a class="navItem" href="/docs/working-with-a-project-navigation">Navigation</a></li><li class="navListItem"><a class="navItem" href="/docs/working-with-a-project-store">Store</a></li><li class="navListItem"><a class="navItem" href="/docs/working-with-a-project-data">Data</a></li></ul></div></div></section></div><script>
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">View</h1></header><article><div><span><p>We organize views in a project into <strong>screens</strong> and <strong>components</strong>.</p>
+<h2><a class="anchor" aria-hidden="true" id="screens"></a><a href="#screens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Screens</h2>
+<p>Screens are represents kind of container or we can call pages.</p>
+<p><strong>Commands:</strong></p>
+<p><code>anoa view screen &lt;screen-name&gt;</code></p>
+<p>or</p>
+<p><code>anoa v s &lt;screen-name&gt;</code></p>
+<p><strong>Folder:</strong></p>
+<p><code>src/views/screens/&lt;screen-name&gt;</code></p>
+<h2><a class="anchor" aria-hidden="true" id="components"></a><a href="#components" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Components</h2>
+<p>Components are reusable/shared React components that can be used across multiple places inside application.</p>
+<p><strong>Commands:</strong></p>
+<p><code>anoa view component &lt;component-name&gt;</code></p>
+<p>or</p>
+<p><code>anoa v c &lt;component-name&gt;</code></p>
+<p><strong>Folder:</strong></p>
+<p><code>src/views/components/&lt;component-name&gt;</code></p>
+<h2><a class="anchor" aria-hidden="true" id="screen-component-type"></a><a href="#screen-component-type" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Screen &amp; Component Type</h2>
+<p>When you create whether a <strong>screen</strong> or <strong>component</strong>, you'll be asked about the type of component.
+There are 3 types of screen or component you can use: <strong><a href="#class-based">Class Based</a></strong>, <strong><a href="#stateless">Stateless</a></strong> or <strong><a href="#stateless-functional">Stateless Functional</a></strong>.</p>
+<pre><code class="hljs css language-bash">$ anoa view <span class="token function">screen</span> todoList
+? Select <span class="token function">screen</span> <span class="token function">type</span>
+<span class="token operator">></span> Class based <span class="token function">screen</span>
+  Stateless <span class="token function">screen</span>
+  Stateless functional <span class="token function">screen</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="class-based"></a><a href="#class-based" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Class Based</h3>
+<p>This will generates a React class based component. Using this type, you'll be asked whether you want to have a state in your component or not.</p>
+<pre><code class="hljs css language-bash">$ anoa view <span class="token function">screen</span> todoList
+? Select <span class="token function">screen</span> <span class="token function">type</span> Class based <span class="token function">screen</span>
+? Location /
+? Do you want to have state <span class="token keyword">in</span> your screen? <span class="token punctuation">(</span>Y/n<span class="token punctuation">)</span>
+</code></pre>
+<p>If you choose <strong>yes</strong>, then it will generates an empty <strong>state</strong> interface and also <code>constructor</code> so you can initialize your component state here.</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Text<span class="token punctuation">,</span> View <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> TodoListScreenProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./props'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> TodoListScreenState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./state'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">TodoListScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span><span class="token operator">&lt;</span>
+  TodoListScreenProps<span class="token punctuation">,</span>
+  TodoListScreenState
+<span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">:</span> TodoListScreenProps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">public</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>View<span class="token operator">></span>
+        <span class="token operator">&lt;</span>Text<span class="token operator">></span>TodoListScreen<span class="token operator">&lt;</span><span class="token operator">/</span>Text<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Otherwise:</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Text<span class="token punctuation">,</span> View <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> TodoListScreenProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./props'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">TodoListScreen</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span><span class="token operator">&lt;</span>TodoListScreenProps<span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">:</span> TodoListScreenProps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">public</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>View<span class="token operator">></span>
+        <span class="token operator">&lt;</span>Text<span class="token operator">></span>TodoListScreen<span class="token operator">&lt;</span><span class="token operator">/</span>Text<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>However you can create state later on by using this command:</p>
+<pre><code class="hljs css language-bash">$ anoa view state
+? What kind of view would you like to have state on it?
+  Component
+<span class="token operator">></span> Screen
+</code></pre>
+<p>Following by selecting the screen you want to add state on it:</p>
+<pre><code class="hljs css language-bash">? Now <span class="token keyword">select</span> the Screen:
+  CompletedTaskListScreen <span class="token punctuation">[</span>completed-task-list<span class="token punctuation">]</span>
+  MainScreen <span class="token punctuation">[</span>main<span class="token punctuation">]</span>
+<span class="token operator">></span> TodoListScreen <span class="token punctuation">[</span>todo-list<span class="token punctuation">]</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="stateless"></a><a href="#stateless" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stateless</h3>
+<p>Use this type to generate a simple React component. That is a plain function which takes props as an argument and returns a React element.</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Text<span class="token punctuation">,</span> View <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> TodoListScreenProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./props'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">TodoListScreen</span><span class="token punctuation">(</span>props<span class="token punctuation">:</span> TodoListScreenProps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>View<span class="token operator">></span>
+      <span class="token operator">&lt;</span>Text<span class="token operator">></span>TodoListScreen<span class="token operator">&lt;</span><span class="token operator">/</span>Text<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="stateless-functional"></a><a href="#stateless-functional" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Stateless Functional</h3>
+<p>Same as <strong><a href="#stateless">Stateless</a></strong>, but this will generates an arrow function insted.</p>
+<pre><code class="hljs css language-typescript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Text<span class="token punctuation">,</span> View <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-native'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> TodoListScreenProps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./props'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> TodoListScreen<span class="token punctuation">:</span> React<span class="token punctuation">.</span><span class="token constant">SFC</span><span class="token operator">&lt;</span>TodoListScreenProps<span class="token operator">></span> <span class="token operator">=</span> props <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>View<span class="token operator">></span>
+      <span class="token operator">&lt;</span>Text<span class="token operator">></span>TodoListScreen<span class="token operator">&lt;</span><span class="token operator">/</span>Text<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>View<span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/getting-started-project-structure"><span class="arrow-prev">← </span><span>Project Structure</span></a><a class="docs-next button" href="/docs/working-with-a-project-navigation"><span>Navigation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#screens">Screens</a></li><li><a href="#components">Components</a></li><li><a href="#screen-component-type">Screen &amp; Component Type</a><ul class="toc-headings"><li><a href="#class-based">Class Based</a></li><li><a href="#stateless">Stateless</a></li><li><a href="#stateless-functional">Stateless Functional</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Released under the <a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT License</a></section><section class="copyright">Copyright © 2018 Budi Adiono</section></footer></div></body></html>
