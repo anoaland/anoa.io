@@ -24,7 +24,8 @@ const siteConfig = {
   title: 'Anoa CLI', // Title for your website.
   tagline: 'React Native Typescript Boilerplate & Code Generator',
   url: 'https://anoaland.github.io', // Your website URL
-  baseUrl: '/',
+  // baseUrl: '/',
+  baseUrl: '/anoa.io/',
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
