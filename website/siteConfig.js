@@ -25,12 +25,12 @@ const siteConfig = {
   tagline: 'React Native Typescript Boilerplate & Code Generator',
 
   // For anoa.io
-  url: 'https://anoa.io',
-  baseUrl: '/',
+  // url: 'https://anoa.io',
+  // baseUrl: '/',
 
   // For github.io:
-  // url: 'https://anoaland.github.io',
-  // baseUrl: process.env.NODE_ENV === 'production' ? '/anoa.io/' : '/',
+  url: 'https://anoaland.github.io',
+  baseUrl: process.env.NODE_ENV === 'production' ? '/anoa.io/' : '/',
 
   // Used for publishing and more
   projectName: 'anoa.io',
