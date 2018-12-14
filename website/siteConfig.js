@@ -23,12 +23,14 @@ const users = [
 const siteConfig = {
   title: 'Anoa CLI', // Title for your website.
   tagline: 'React Native Typescript Boilerplate & Code Generator',
-  url: 'https://anoaland.github.io', // Your website URL
-  // baseUrl: '/',
-  baseUrl: process.env.NODE_ENV === 'production' ? '/anoa.io/' : '/',
-  // For github.io type URLs, you would set the url and baseUrl like:
-  //   url: 'https://facebook.github.io',
-  //   baseUrl: '/test-site/',
+
+  // For anoa.io
+  url: 'https://anoa.io',
+  baseUrl: '/',
+
+  // For github.io:
+  // url: 'https://anoaland.github.io',
+  // baseUrl: process.env.NODE_ENV === 'production' ? '/anoa.io/' : '/',
 
   // Used for publishing and more
   projectName: 'anoa.io',
