@@ -26,7 +26,7 @@ Now select the screen for this navigator will be rendered to:
 ```bash
 $ anoa nav
 ? Type of navigator: Material Top Tab Navigator
-? What screen should this navigator belongs to?
+? Attach this navigator to:
   CompletedTaskListScreen [completed-task-list]
 > MainScreen [main]
   TodoListScreen [todo-list]
@@ -40,7 +40,7 @@ Then, anoa asks you whether you want to render this navigator directly or not:
 ```bash
 $ anoa nav
 ? Type of navigator: Material Top Tab Navigator
-? What screen should this navigator belongs to? MainScreen [main]
+? Attach this navigator to: MainScreen [main]
 ? Replace MainScreen render function? (Y/n)
 ```
 
@@ -64,7 +64,7 @@ Anoa uses component name as a route path name.
 ```bash
 $ anoa nav
 ? Type of navigator: Material Top Tab Navigator
-? What screen should this navigator belongs to? MainScreen [main]
+? Attach this navigator to: MainScreen [main]
 ? Replace MainScreen render function? true
 ? Routes to:
  (*) CompletedTaskListScreen [completed-task-list]
@@ -87,7 +87,7 @@ $ anoa nav
 At the very first time you add navigator in your project, anoa will installs `react-navigation` and `@types/react-navigation` packages from npm.
 
 ```bash
-\ Adding required packages...
+/ Adding anoa, react-navigation@2.18.2...
 ```
 
 Done! Based on example case above, now you can modify `index.tsx` and `nav.tsx` file under `/srv/views/screen/main` folder as if needed.
