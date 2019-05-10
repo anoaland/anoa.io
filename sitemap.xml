@@ -10,5 +10,6 @@
 <url> <loc>https://anoa.io/docs/working-with-a-project-data</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://anoa.io/docs/working-with-a-project-data" /> </url>
 <url> <loc>https://anoa.io/docs/working-with-a-project-navigation</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://anoa.io/docs/working-with-a-project-navigation" /> </url>
 <url> <loc>https://anoa.io/docs/working-with-a-project-store</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://anoa.io/docs/working-with-a-project-store" /> </url>
+<url> <loc>https://anoa.io/docs/working-with-a-project-theme</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://anoa.io/docs/working-with-a-project-theme" /> </url>
 <url> <loc>https://anoa.io/docs/working-with-a-project-view</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://anoa.io/docs/working-with-a-project-view" /> </url>
 </urlset>
