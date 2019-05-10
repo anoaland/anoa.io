@@ -24,6 +24,7 @@ $ anoa store
 ? What would you like to do with store?
 > Create new reducer
   Add new fields into existing state
+  Add new action type
   Add new action creator
   Update AppStore
 ```
@@ -36,6 +37,8 @@ $ anoa store
 ? Reducer name: todo
 ```
 
+### State
+
 Now specify the state. In this example I'd like to have `tasks` and `completedTasks` which are array of string so I just do this:
 
 ```bash
@@ -45,27 +48,60 @@ $ anoa store
 ? State fields (separated with space, eg: foo:string='some value' bar:number=26), or leave it blank, we'll create an example for you: tasks:string[] completedTasks:string[]
 ```
 
-For the very first time you add store in your application, Anoa will installs new packages from npm which are :
+This action will generates redux state for you:
 
-```
-react-redux
-redux
-redux-thunk
-```
+```typescript
+// state.ts
 
-and also
-
-```
-@types/react-redux
+export default interface TodoState {
+  tasks: string[]
+  completedTasks: string[]
+}
 ```
 
-for typings support for Typescript. Just wait for a moment...
+### Action Types
+
+Next is to sepecify the action types. Have a look example bellow, that I supplied `add:string done:string undone:string` for `Action type(s)`:
 
 ```bash
-| Adding required packages...
+$ anoa store
+? What would you like to do with store? Create new reducer
+? Reducer name: todo
+? State field(s) (separated with space, eg: foo:string='some value' bar:number=26), or leave it blank, we'll create an example for you: tasks:string[] completedTasks:string[]
+? Action type(s) (separated with space, eg: ADD:string LIST), or leave it blank, we'll create an example for you: add:string done:string undone:string
 ```
 
-and done:
+Then it will generates:
+
+```typescript
+// actions.ts
+
+type TodoActions =
+  | {
+      type: 'TODO/ADD'
+      payload: string
+    }
+  | {
+      type: 'TODO/DONE'
+      payload: string
+    }
+  | {
+      type: 'TODO/UNDONE'
+      payload: string
+    }
+
+export default TodoActions
+```
+
+Alright, is done, just need to wait for a moment while Anoa installs required redux packages for us.
+This will only happen once, only for the first time you add store in your application.
+
+```bash
+/ Adding react-redux, redux, redux-thunk...
+| Adding @types/react-redux...
+```
+
+and done - done:
 
 ```bash
 $ anoa store
@@ -77,11 +113,11 @@ $ anoa store
 New reducer was successfully created on src/store/reducers/todo/index.ts
 ```
 
-It says that `New reducer was successfully created on src/store/reducers/todo/index.ts` you can check this file to see your new reducer.
-
-### index.ts
+Here's your reducer file:
 
 ```typescript
+// index.ts
+
 import { Reducer } from 'redux'
 import TodoActions from './actions'
 import TodoState from './state'
@@ -94,11 +130,14 @@ const TodoReducer: Reducer<TodoState, TodoActions> = (
   action
 ) => {
   switch (action.type) {
-    case 'TODO/TASKS':
-      return { ...state, tasks: action.payload }
+    case 'TODO/ADD':
+      return { ...state }
 
-    case 'TODO/COMPLETED_TASKS':
-      return { ...state, completedTasks: action.payload }
+    case 'TODO/DONE':
+      return { ...state }
+
+    case 'TODO/UNDONE':
+      return { ...state }
 
     default:
       return state
@@ -106,33 +145,6 @@ const TodoReducer: Reducer<TodoState, TodoActions> = (
 }
 
 export default TodoReducer
-```
-
-There are also two files generated as well which are `actions.ts` and `state.ts`.
-
-### actions.ts
-
-```typescript
-type TodoActions =
-  | {
-      type: 'TODO/TASKS'
-      payload: string[]
-    }
-  | {
-      type: 'TODO/COMPLETED_TASKS'
-      payload: string[]
-    }
-
-export default TodoActions
-```
-
-### state.ts
-
-```typescript
-export default interface TodoState {
-  tasks: string[]
-  completedTasks: string[]
-}
 ```
 
 Feel free to modify those files as if needed.
@@ -208,6 +220,7 @@ $ anoa store
 ? What would you like to do with store?
   Create new reducer
 > Add new fields into existing state
+  Add new action type
   Add new action creator
   Update AppStore
   Connect store to view
@@ -239,7 +252,56 @@ Press ENTER and done:
 New field(s) was successfully added to TodoState on src/store/reducers/todo/index.ts
 ```
 
-You can check the changes being made on both of `index.ts`, `action.ts` and `state.ts` file.
+You can check the changes have been made on `index.ts` and `state.ts` file.
+
+## Add new action type
+
+```bash
+$ anoa s
+? What would you like to do with store?
+  Create new reducer
+  Add new fields into existing state
+> Add new action type
+  Add new action creator
+  Update AppStore
+  Connect store to view
+```
+
+Select the reducer:
+
+```bash
+$ anoa s
+? What would you like to do with store? Add new action type
+? Select reducer:
+> todo
+```
+
+Fill the name of action type. For example I'd like to have new action called `TODO/CLEAR`, then I just neet to supply `clear`:
+
+```bash
+$ anoa s
+? What would you like to do with store? Add new action type
+? Select reducer: todo
+? Action type name: clear
+```
+
+Enter the payload type, or leave it blank if you don't want to have payload parameter for this action:
+
+```bash
+$ anoa s
+? What would you like to do with store? Add new action type
+? Select reducer: todo
+? Action type name: clear
+? Payload type (optional):
+```
+
+And done:
+
+```bash
+New action type was successfully added to Todo reducer on src/store/reducers/todo/index.ts
+```
+
+You can check the changes have been made on `index.ts` and `actions.ts` file.
 
 ## Add new action creator
 
@@ -250,6 +312,7 @@ $ anoa store
 ? What would you like to do with store?
   Create new reducer
   Add new fields into existing state
+  Add new action type
 > Add new action creator
   Update AppStore
   Connect store to view
@@ -283,9 +346,9 @@ $ anoa store
 ? Action type (Leave blank -- we'll let you to pick it):
 ? Select action from TodoActions
 ? Select type
-> TODO/TASKS
-  TODO/COMPLETED_TASKS
-  TODO/IMPORTANT_TASKS
+> TODO/ADD
+  TODO/DONE
+  TODO/UNDONE
 ```
 
 Now enter the file name. This file will be stored under `src/store/actions` directory. Let's give it name with `todo`:
@@ -296,7 +359,7 @@ $ anoa store
 ? Action name addTask
 ? Action type (Leave blank -- we'll let you to pick it):
 ? Select action from TodoActions
-? Select type TODO/TASKS
+? Select type TODO/ADD
 ? Save this action to file name: todo
 ```
 
@@ -313,21 +376,18 @@ import { AppThunkAction } from '..'
 
 export function addTaskAction(payload: string[]): AppThunkAction {
   return dispatch => {
-    dispatch({ type: 'TODO/TASKS', payload })
+    dispatch({ type: 'TODO/ADD', payload })
   }
 }
 ```
 
-This command simply transforms the state's field(s) of action type as a payload parameter(s).
+This command simply transforms the action type's payload parameter(s) to function parameter(s).
 You can modify this action creator to fullfill your needs, for example:
 
 ```typescript
-export function addTaskAction(task: string): AppThunkAction {
-  return async (dispatch, getState) => {
-    dispatch({
-      type: 'TODO/TASKS',
-      payload: [...getState().todo.tasks, task]
-    })
+export function addTaskAction(payload: string): AppThunkAction {
+  return dispatch => {
+    dispatch({ type: 'TODO/ADD', payload })
   }
 }
 ```
@@ -343,6 +403,7 @@ $ anoa store
 ? What would you like to do with store?
   Create new reducer
   Add new fields into existing state
+  Add new action type
   Add new action creator
 > Update AppStore
   Connect store to view
@@ -367,6 +428,7 @@ $ anoa store
 ? What would you like to do with store?
   Create new reducer
   Add new fields into existing state
+  Add new action type
   Add new action creator
   Update AppStore
 > Connect store to view
